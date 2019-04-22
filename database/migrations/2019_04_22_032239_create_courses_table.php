@@ -15,13 +15,14 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->string('name');
+            $table->text('description');
             $table->string('slug');
             $table->string('picture')->nullable();
             $table->enum('status', [Course::PUBLISHED, Course::PENDING, Course::REJECTED])
                 ->default(Course::PENDING);
-            $table->boolean('previus_approved')->default(false);
-            $table->boolean('previus_rejected')->default(false);
+            $table->boolean('previous_approved')->default(false);
+            $table->boolean('previous_rejected')->default(false);
 
             $table->unsignedInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('teachers');
