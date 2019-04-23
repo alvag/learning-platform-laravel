@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -72,6 +73,9 @@
                 </div>
             </div>
         </div>
+
+        @include('partials.auth.social_login')
+
     </div>
 </div>
 @endsection
