@@ -9,9 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -75,8 +72,22 @@
         </nav>
 
         <main class="py-4">
+            @if (session('message'))
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="alert alert-{{ session('message')[0]  }}">
+                            <h4 class="alert-heading">{{ __('Mensaje informativo') }}</h4>
+                            <p>{{ session('message')[1]  }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

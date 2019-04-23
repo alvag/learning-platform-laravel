@@ -38,11 +38,18 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToProvider(string $driver) {
+    public function redirectToProvider(string $driver)
+    {
         return Socialite::driver($driver)->redirect();
     }
 
-    public function handleProviderCallback(string $driver) {
+    public function handleProviderCallback(string $driver)
+    {
+        if (!request()->has('code') || request()->has('denied')) {
+            session()->flash('message', ['danger', __('Inicio de sesión cancelado')]);
+            return redirect('login');
+        }
+
         $socialUser = Socialite::driver($driver)->user();
         dd($socialUser);
     }
