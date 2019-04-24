@@ -20,8 +20,6 @@ class CreateUserSocialAccountsTable extends Migration
 
             $table->string('provider');
             $table->string('provider_uid');
-
-            $table->timestamps();
         });
     }
 

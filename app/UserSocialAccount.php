@@ -29,7 +29,14 @@ use Illuminate\Support\Carbon;
  */
 class UserSocialAccount extends Model
 {
-    public function user() {
+    protected $fillable = [
+        'user_id', 'provider', 'provider_uid'
+    ];
+
+    public $timestamps = false;
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\DatabaseNotification;
@@ -9,13 +10,16 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
+use Str;
 
 /**
  * App\User
  *
  * @property int $id
  * @property string $name
+ * @property string last_name
  * @property string $email
+ * @property string $slug
  * @property Carbon|null $email_verified_at
  * @property string $password
  * @property int $role_id
@@ -78,6 +82,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function (User $user) {
+            if (!App::runningInConsole()) {
+                $user->slug = Str::slug($user->name . ' ' . $user->last_name, '-');
+            }
+        });
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -93,7 +108,8 @@ class User extends Authenticatable
         return $this->hasOne(Teacher::class);
     }
 
-    public function socialAccount() {
+    public function socialAccount()
+    {
         return $this->hasOne(UserSocialAccount::class);
     }
 }
