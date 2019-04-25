@@ -14,6 +14,9 @@
                 <ul class="navbar-nav mr-auto"></ul>
 
                 <ul class="navbar nav ml-auto">
+
+                    @include('partials.navigations.' . \App\User::navigation())
+
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="navBarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ __('Selecciona un idioma') }}
