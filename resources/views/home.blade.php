@@ -1,23 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="px-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+        @forelse($courses as $course)
+            <div class="col-md-3">
+                {{ $course->name }}
             </div>
-        </div>
+        @empty
+            <div class="alert alert-dark">
+                {{ __('No hay cursos disponibles') }}
+            </div>
+        @endforelse
     </div>
+
+    <div class="row justify-content-center">
+        {{ $courses->links() }}
+    </div>
+
 </div>
 @endsection
