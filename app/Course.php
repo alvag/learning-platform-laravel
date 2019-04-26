@@ -23,6 +23,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $deleted_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property mixed reviews
  * @method static Builder|Course newModelQuery()
  * @method static Builder|Course newQuery()
  * @method static Builder|Course query()
@@ -47,6 +48,10 @@ class Course extends Model
     const PUBLISHED = 1;
     const PENDING = 2;
     const REJECTED = 3;
+
+    public function pathAttachment() {
+        return '/images/courses/'. $this->picture;
+    }
 
     public function category()
     {
@@ -81,6 +86,10 @@ class Course extends Model
     public function teacher()
     {
         return $this->belongsTo(Teacher::class);
+    }
+
+    public function getRatingAttribute() {
+        return $this->reviews->avg('rating');
     }
 
 }

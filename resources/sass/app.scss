@@ -2,10 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Hind+Vadodara');
 // Variables
 @import 'variables';
-// Bootstrap
+@import "card";
 @import '~bootstrap/scss/bootstrap';
 
-@import "card";
 
 body {
     font-family: 'Hind Vadodara', sans-serif;

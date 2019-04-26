@@ -14,7 +14,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('rating', 2);
+            $table->integer('rating');
             $table->text('comment')->nullable();
 
             $table->unsignedInteger('course_id');

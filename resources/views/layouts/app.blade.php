@@ -18,8 +18,9 @@
 
 @include('partials.navigation')
 
-<div id="app">
+@yield('jumbotron')
 
+<div id="app">
 
     <main class="py-4">
         @if (session('message'))
