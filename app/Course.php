@@ -24,6 +24,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property mixed reviews
+ * @property mixed category
  * @method static Builder|Course newModelQuery()
  * @method static Builder|Course newQuery()
  * @method static Builder|Course query()
@@ -42,15 +43,17 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Course whereUpdatedAt($value)
  * @mixin Eloquent
  */
-
 class Course extends Model
 {
     const PUBLISHED = 1;
     const PENDING = 2;
     const REJECTED = 3;
 
-    public function pathAttachment() {
-        return '/images/courses/'. $this->picture;
+    protected $withCount = ['reviews', 'students'];
+
+    public function pathAttachment()
+    {
+        return '/images/courses/' . $this->picture;
     }
 
     public function category()
@@ -88,8 +91,23 @@ class Course extends Model
         return $this->belongsTo(Teacher::class);
     }
 
-    public function getRatingAttribute() {
+    public function getRatingAttribute()
+    {
         return $this->reviews->avg('rating');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function relatedCourses()
+    {
+        return Course::with('reviews')->whereCategoryId($this->category->id)
+            ->where('id', '!=', $this->id)
+            ->latest()
+            ->limit(6)
+            ->get();
     }
 
 }
