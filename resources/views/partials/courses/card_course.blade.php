@@ -11,6 +11,6 @@
         <hr>
         <span class="badge badge-danger badge-cat">{{ $course->category->name }}</span>
         <p class="card-text">{{ \Illuminate\Support\Str::limit($course->description, 100) }}</p>
-        <a href="#" class="btn btn-course btn-block">{{ __('Más información') }}</a>
+        <a href="{{ route('courses.detail', $course->slug) }}" class="btn btn-course btn-block">{{ __('Más información') }}</a>
     </div>
 </div>
