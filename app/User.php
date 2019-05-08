@@ -10,6 +10,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
+use Laravel\Cashier\Billable;
 use Str;
 
 /**
@@ -32,6 +33,8 @@ use Str;
  * @property string|null $card_last_four
  * @property string|null $trial_ends_at
  * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
+ * @property Teacher $teacher
+ * @property Student student
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User query()
@@ -53,7 +56,7 @@ use Str;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
