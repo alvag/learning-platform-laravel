@@ -6,16 +6,15 @@
         :product="product"
     >
     </stripe-checkout>
-
 </template>
 
 <script>
     import { StripeCheckout } from 'vue-stripe';
-
     export default {
         components: {
             StripeCheckout
         },
+        name: "stripe-form",
         props: {
             stripe_key: '',
             name: '',
@@ -33,7 +32,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

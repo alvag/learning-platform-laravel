@@ -1775,12 +1775,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     StripeCheckout: vue_stripe__WEBPACK_IMPORTED_MODULE_0__["StripeCheckout"]
   },
+  name: "stripe-form",
   props: {
     stripe_key: '',
     name: '',
@@ -37074,10 +37074,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true& ***!
-  \*************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc& ***!
+  \*************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -49274,17 +49274,18 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_StripeForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/StripeForm */ "./resources/js/components/StripeForm.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_StripeForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/StripeForm */ "./resources/js/components/StripeForm.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window.Vue = require('vue');
 
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49295,14 +49296,15 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('stripe-form', __webpack_require__(/*! ./components/StripeForm */ "./resources/js/components/StripeForm.vue"));
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('stripe-form', _components_StripeForm__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app'
 });
 
@@ -49375,7 +49377,7 @@ if (token) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _StripeForm_vue_vue_type_template_id_13c2dedc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true& */ "./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true&");
+/* harmony import */ var _StripeForm_vue_vue_type_template_id_13c2dedc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StripeForm.vue?vue&type=template&id=13c2dedc& */ "./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&");
 /* harmony import */ var _StripeForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StripeForm.vue?vue&type=script&lang=js& */ "./resources/js/components/StripeForm.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -49387,11 +49389,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _StripeForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _StripeForm_vue_vue_type_template_id_13c2dedc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _StripeForm_vue_vue_type_template_id_13c2dedc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _StripeForm_vue_vue_type_template_id_13c2dedc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _StripeForm_vue_vue_type_template_id_13c2dedc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "13c2dedc",
+  null,
   null
   
 )
@@ -49417,19 +49419,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc& ***!
+  \*******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StripeForm_vue_vue_type_template_id_13c2dedc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StripeForm_vue_vue_type_template_id_13c2dedc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StripeForm_vue_vue_type_template_id_13c2dedc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./StripeForm.vue?vue&type=template&id=13c2dedc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/StripeForm.vue?vue&type=template&id=13c2dedc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StripeForm_vue_vue_type_template_id_13c2dedc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StripeForm_vue_vue_type_template_id_13c2dedc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StripeForm_vue_vue_type_template_id_13c2dedc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

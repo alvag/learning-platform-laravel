@@ -3,12 +3,11 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import StripeForm from "./components/StripeForm";
-
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
+import Vue from 'vue';
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,7 +20,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('stripe-form', require('./components/StripeForm'));
+import StripeForm from './components/StripeForm';
+Vue.component('stripe-form', StripeForm);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
