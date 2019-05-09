@@ -9,7 +9,7 @@ class SubscriptionController extends Controller
 
     public function __construct()
     {
-        $this->middleware(function($request, $next) {
+        $this->middleware(function ($request, $next) {
 
             if (auth()->user()->subscribed('maim')) {
                 return redirect('/')
@@ -20,11 +20,36 @@ class SubscriptionController extends Controller
         })->only(['plans', 'processSubscription']);
     }
 
-    public function plans() {
+    public function plans()
+    {
         return view('subscriptions.plans');
     }
 
-    public function processSubscription() {
+    public function processSubscription()
+    {
+        $token = request('stripeToken');
 
+        try {
+
+            if (request('coupon')) {
+                request()->user()->newSubscription('main', request('type'))
+                    ->withCoupon(request('coupon'))->create($token);
+            } else {
+                request()->user()->newSubscription('main', request('type'))
+                    ->create($token);
+            }
+
+            return redirect(route('subscriptions.admin'))
+                ->with('message', ['success', __("La suscripción se ha realizado correctamente.")]);
+
+        } catch (\Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('message', ['danger', $error]);
+        }
+    }
+
+    public function admin()
+    {
+        return view('subscriptions.admin');
     }
 }
