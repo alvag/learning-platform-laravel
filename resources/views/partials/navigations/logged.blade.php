@@ -6,8 +6,8 @@
     </a>
 
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a href="#" class="dropdown-item">{{ __('Mis Suscripciones') }}</a>
-        <a href="#" class="dropdown-item">{{ __('Mis Facturas') }}</a>
+        <a href="{{ route('subscriptions.admin') }}" class="dropdown-item">{{ __('Mis Suscripciones') }}</a>
+        <a href="{{ route('invoices.admin') }}" class="dropdown-item">{{ __('Mis Facturas') }}</a>
 
         <a href="{{ route('logout') }}"
            class="dropdown-item"
