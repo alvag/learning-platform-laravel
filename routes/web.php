@@ -48,4 +48,5 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['prefix' => 'profile', 'middleware' => ['auth']], function () {
    Route::get('/', 'ProfileController@index')->name('profile.index');
+   Route::put('/', 'ProfileController@update')->name('profile.update');
 });
