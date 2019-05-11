@@ -21,7 +21,8 @@ Route::get('/images/{path}/{attachment}', function ($path, $attachment) {
 });
 
 Route::group(['prefix' => 'courses'], function () {
-    Route::get('/{course}/inscribe', 'CourseController@inscribe')->name('course.inscribe')->middleware('auth');
+    Route::get('/subscribed', 'CourseController@subscribed')->name('courses.subscribed')->middleware('auth');
+    Route::get('/{course}/inscribe', 'CourseController@inscribe')->name('courses.inscribe')->middleware('auth');
     Route::get('/{course}', 'CourseController@show')->name('courses.detail');
 });
 
