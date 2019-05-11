@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $website_url
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property User user
  * @method static Builder|Teacher newModelQuery()
  * @method static Builder|Teacher newQuery()
  * @method static Builder|Teacher query()

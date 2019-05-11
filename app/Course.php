@@ -26,6 +26,7 @@ use Illuminate\Support\Carbon;
  * @property mixed reviews
  * @property mixed category
  * @property mixed students
+ * @property Teacher teacher
  * @method static Builder|Course newModelQuery()
  * @method static Builder|Course newQuery()
  * @method static Builder|Course query()
