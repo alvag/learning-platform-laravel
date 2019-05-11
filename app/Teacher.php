@@ -32,6 +32,8 @@ use Illuminate\Support\Carbon;
  */
 class Teacher extends Model
 {
+    protected $fillable = ['user_id'];
+
     public function course()
     {
         return $this->hasMany(Course::class);

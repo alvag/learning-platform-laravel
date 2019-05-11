@@ -22,7 +22,6 @@ class ProfileController extends Controller
         ]);
 
         if (trim(request('password'))) {
-//            dd(request()->all());
             $user = auth()->user();
             $user->password = bcrypt(request('password'));
             $user->save();

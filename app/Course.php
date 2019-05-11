@@ -5,6 +5,7 @@ namespace App;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
@@ -47,6 +48,8 @@ use Illuminate\Support\Carbon;
  */
 class Course extends Model
 {
+    use SoftDeletes;
+
     const PUBLISHED = 1;
     const PENDING = 2;
     const REJECTED = 3;

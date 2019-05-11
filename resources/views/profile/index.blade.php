@@ -106,7 +106,7 @@
                             {{ __("Convertirme en profesor de la plataforma") }}
                         </div>
                         <div class="card-body">
-                            <form action="#" method="POST">
+                            <form action="{{ route('solicitude.teacher') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-outline-primary btn-block">
                                     <i class="fa fa-graduation-cap"></i> {{ __("Solicitar") }}
@@ -166,6 +166,65 @@
             </div>
         </div>
     </div>
-    {{--    @include('partials.modal')--}}
+        @include('partials.modal')
 @endsection
 
+@push('scripts')
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        let dt;
+        let modal = jQuery("#appModal");
+        jQuery(document).ready(function() {
+            dt = jQuery("#students-table").DataTable({
+                pageLength: 5,
+                lengthMenu: [ 5, 10, 25, 50, 75, 100 ],
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('teacher.students') }}',
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+                columns: [
+                    {data: 'user.id', visible: false},
+                    {data: 'user.name'},
+                    {data: 'user.email'},
+                    {data: 'courses_formatted'},
+                    {data: 'actions'}
+                ]
+            });
+
+            jQuery(document).on("click", '.btnEmail', function (e) {
+                e.preventDefault();
+                const id = jQuery(this).data('id');
+                modal.find('.modal-title').text('{{ __("Enviar mensaje") }}');
+                modal.find('#modalAction').text('{{ __("Enviar mensaje") }}').show();
+                let $form = $("<form id='studentMessage'></form>");
+                $form.append(`<input type="hidden" name="user_id" value="${id}" />`);
+                $form.append(`<textarea class="form-control" name="message"></textarea>`);
+                modal.find('.modal-body').html($form);
+                modal.modal();
+            });
+
+            jQuery(document).on("click", "#modalAction", function (e) {
+                jQuery.ajax({
+                    url: '{{ route('teacher.send_message_to_student') }}',
+                    type: 'POST',
+                    headers: {
+                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
+                    },
+                    data: {
+                        info: $("#studentMessage").serialize()
+                    },
+                    success: (res) => {
+                        if(res.res) {
+                            modal.find('#modalAction').hide();
+                            modal.find('.modal-body').html('<div class="alert alert-success">{{ __("Mensaje enviado correctamente") }}</div>');
+                        } else {
+                            modal.find('.modal-body').html('<div class="alert alert-danger">{{ __("Ha ocurrido un error enviando el correo") }}</div>');
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+@endpush
