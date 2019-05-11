@@ -96,6 +96,11 @@ class User extends Authenticatable
         });
     }
 
+    public function pathAttachment()
+    {
+        return '/images/users/' . $this->picture;
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -116,7 +121,8 @@ class User extends Authenticatable
         return $this->hasOne(UserSocialAccount::class);
     }
 
-    public static function navigation() {
+    public static function navigation()
+    {
         return auth()->check() ? auth()->user()->role->name : 'guest';
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Mail\NewStudentInCourse;
+use App\Review;
 use Mail;
 
 class CourseController extends Controller
@@ -50,7 +51,14 @@ class CourseController extends Controller
 
     public function addReview()
     {
+        Review::create([
+            'user_id' => auth()->id(),
+            'course_id' => request('course_id'),
+            'rating' => request('rating_input'),
+            'comment' => request('message'),
+        ]);
 
+        return back()->with('message', ['success', __('Muchas gracias por valorar el curso')]);
     }
 
 }

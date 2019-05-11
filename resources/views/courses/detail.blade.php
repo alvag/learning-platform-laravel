@@ -14,6 +14,7 @@
             @include('partials.courses.related')
             @include('partials.courses.form_review')
         </div>
+        @include('partials.courses.reviews')
     </div>
 
 @endsection
