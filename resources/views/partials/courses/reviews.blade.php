@@ -9,7 +9,7 @@
             @forelse($course->reviews as $review)
                 <div class="col-md-8 offset-2 listing-block">
                     <div class="media">
-                        <img class="img-rounded" src="{{ $review->user->pathAttachment() }}" alt="{{ $review->user->name }}">
+                        <img class="img-thumbnail" src="{{ $review->user->pathAttachment() }}" alt="{{ $review->user->name }}">
                         <div class="media-body pl-3">
                             @if ($review->comment)
                                 <div class="price">
