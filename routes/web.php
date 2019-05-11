@@ -21,8 +21,11 @@ Route::get('/images/{path}/{attachment}', function ($path, $attachment) {
 });
 
 Route::group(['prefix' => 'courses'], function () {
-    Route::get('/subscribed', 'CourseController@subscribed')->name('courses.subscribed')->middleware('auth');
-    Route::get('/{course}/inscribe', 'CourseController@inscribe')->name('courses.inscribe')->middleware('auth');
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/subscribed', 'CourseController@subscribed')->name('courses.subscribed');
+        Route::get('/{course}/inscribe', 'CourseController@inscribe')->name('courses.inscribe');
+        Route::post('add_review', 'CourseController@addReview')->name('courses.add_review');
+    });
     Route::get('/{course}', 'CourseController@show')->name('courses.detail');
 });
 
@@ -37,8 +40,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'invoices'], function () {
-       Route::get('/admin', 'InvoiceController@admin')->name('invoices.admin');
-       Route::get('/{invoice}/download', 'InvoiceController@download')->name('invoices.download');
+        Route::get('/admin', 'InvoiceController@admin')->name('invoices.admin');
+        Route::get('/{invoice}/download', 'InvoiceController@download')->name('invoices.download');
     });
 
 });

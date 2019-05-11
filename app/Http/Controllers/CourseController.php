@@ -48,4 +48,9 @@ class CourseController extends Controller
         return view('courses.subscribed', compact('courses'));
     }
 
+    public function addReview()
+    {
+
+    }
+
 }
