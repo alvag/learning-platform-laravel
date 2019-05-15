@@ -7,6 +7,7 @@ use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\Language;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -73,15 +74,16 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => Authenticate::class,
-        'auth.basic' => AuthenticateWithBasicAuth::class,
-        'bindings' => SubstituteBindings::class,
+        'auth'          => Authenticate::class,
+        'auth.basic'    => AuthenticateWithBasicAuth::class,
+        'bindings'      => SubstituteBindings::class,
         'cache.headers' => SetCacheHeaders::class,
-        'can' => Authorize::class,
-        'guest' => RedirectIfAuthenticated::class,
-        'signed' => ValidateSignature::class,
-        'throttle' => ThrottleRequests::class,
-        'verified' => EnsureEmailIsVerified::class,
+        'can'           => Authorize::class,
+        'guest'         => RedirectIfAuthenticated::class,
+        'signed'        => ValidateSignature::class,
+        'throttle'      => ThrottleRequests::class,
+        'verified'      => EnsureEmailIsVerified::class,
+        'role'          => RoleMiddleware::class
     ];
 
     /**
