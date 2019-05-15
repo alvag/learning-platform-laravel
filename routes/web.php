@@ -1,5 +1,7 @@
 <?php
 
+use App\Role;
+
 Route::get('/set_language/{lang}', 'Controller@setLanguage')->name('set_language');
 
 Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider')->name('social_auth');
@@ -21,11 +23,19 @@ Route::get('/images/{path}/{attachment}', function ($path, $attachment) {
 });
 
 Route::group(['prefix' => 'courses'], function () {
+
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/subscribed', 'CourseController@subscribed')->name('courses.subscribed');
         Route::get('/{course}/inscribe', 'CourseController@inscribe')->name('courses.inscribe');
         Route::post('add_review', 'CourseController@addReview')->name('courses.add_review');
+        Route::get('/create', 'CourseController@create')->name('courses.create')
+            ->middleware([sprintf('role:%s', Role::TEACHER)]);
+        Route::post('/store', 'CourseController@store')->name('courses.store')
+            ->middleware([sprintf('role:%s', Role::TEACHER)]);
+        Route::put('/store', 'CourseController@update')->name('courses.update')
+            ->middleware([sprintf('role:%s', Role::TEACHER)]);
     });
+
     Route::get('/{course}', 'CourseController@show')->name('courses.detail');
 });
 
@@ -47,15 +57,15 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => ['auth']], function () {
-   Route::get('/', 'ProfileController@index')->name('profile.index');
-   Route::put('/', 'ProfileController@update')->name('profile.update');
+    Route::get('/', 'ProfileController@index')->name('profile.index');
+    Route::put('/', 'ProfileController@update')->name('profile.update');
 });
 
-Route::group(['prefix' => "solicitude"], function() {
+Route::group(['prefix' => "solicitude"], function () {
     Route::post('/teacher', 'SolicitudeController@teacher')->name('solicitude.teacher');
 });
 
-Route::group(['prefix' => "teacher", "middleware" => ["auth"]], function() {
+Route::group(['prefix' => "teacher", "middleware" => ["auth"]], function () {
     Route::get('/courses', 'TeacherController@courses')->name('teacher.courses');
     Route::get('/students', 'TeacherController@students')->name('teacher.students');
     Route::post('/send_message_to_student', 'TeacherController@sendMessageToStudent')->name('teacher.send_message_to_student');
