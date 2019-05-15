@@ -27,6 +27,8 @@ use Illuminate\Support\Carbon;
  */
 class Goal extends Model
 {
+    protected $fillable = ['course_id', 'goal'];
+
     public function course() {
         return $this->belongsTo(Course::class);
     }

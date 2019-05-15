@@ -80,6 +80,8 @@ class CourseController extends Controller
         $courseRequest->merge(['status' => Course::PENDING]);
 
         Course::create($courseRequest->input());
+
+        return back()->with('message', ['success', __('Curso enviado correctamente, recibirá un correo con cualquier información.')]);
     }
 
     public function update()
