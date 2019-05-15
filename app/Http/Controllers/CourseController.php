@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Helpers\Helper;
 use App\Http\Requests\CourseRequest;
 use App\Mail\NewStudentInCourse;
 use App\Review;
@@ -72,7 +73,13 @@ class CourseController extends Controller
 
     public function store(CourseRequest $courseRequest)
     {
-        dd($courseRequest->all());
+        $picture = Helper::uploadFile('picture', 'courses');
+
+        $courseRequest->merge(['picture' => $picture]);
+        $courseRequest->merge(['teacher_id' => auth()->user()->teacher->id]);
+        $courseRequest->merge(['status' => Course::PENDING]);
+
+        Course::create($courseRequest->input());
     }
 
     public function update()
