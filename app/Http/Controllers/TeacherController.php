@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Mail\MessageToStudent;
 use App\Student;
 use App\User;
@@ -12,9 +13,10 @@ use Mail;
 
 class TeacherController extends Controller
 {
-    public function courses()
-    {
-
+    public function courses () {
+        $courses = Course::withCount(['students'])->with('category', 'reviews')
+            ->whereTeacherId(auth()->user()->teacher->id)->paginate(12);
+        return view('teachers.courses', compact('courses'));
     }
 
     public function students()
