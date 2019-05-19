@@ -20,14 +20,19 @@ import Vue from 'vue';
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+import {ServerTable} from 'vue-tables-2';
+Vue.use(ServerTable, {}, false, 'bootstrap4', 'default');
+
+//VUE HTTP RESOURCE
+import VueResource from 'vue-resource'
+Vue.use(VueResource);
+//.VUE HTTP RESOURCE
+
 import StripeForm from './components/StripeForm';
 Vue.component('stripe-form', StripeForm);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import Courses from './components/Courses';
+Vue.component('courses-list', Courses);
 
 const app = new Vue({
     el: '#app'
